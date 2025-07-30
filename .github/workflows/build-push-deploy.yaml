@@ -23,9 +23,9 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build -f Dockerfile \
-          -t "pass:[\(DH_USER/\)]REPO:latest" \
-          -t "pass:[\(DH_USER/\)]REPO:${{ github.sha }}" \
+          -t "pass:$DH_USER/$REPO:latest" \
+          -t "pass:$DH_USER/$REPO:${{ github.sha }}" \
           .
     - name: Push the Docker image to Docker Hub
       run: |
-        docker push "pass:[\(DH_USER/\)]REPO" --all-tags
+        docker push "pass:$DH_USER/$REPO" --all-tags
