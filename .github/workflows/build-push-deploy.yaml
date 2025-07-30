@@ -15,6 +15,13 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+    - name: Configure the SSH Private Key Secret
+      run: |
+        mkdir -p ~/.ssh/
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+    - name: Set Strict Host Key Checking
+      run: echo "StrictHostKeyChecking=no" > ~/.ssh/config
     - name: Login to Docker Hub
       uses: docker/login-action@v2
       with:
