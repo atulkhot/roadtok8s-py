@@ -43,10 +43,10 @@ jobs:
         ssh $SSH_OPTS $REMOTE sudo mkdir -p $REMOTE_APP_DIR
     - name: Copy GitHub Actions .env file to Remote VM
       run: |
-        scp ${{ SSH_OPTS }} .env $REMOTE:$REMOTE_APP_DIR/.env
+        scp $SSH_OPTS .env $REMOTE:$REMOTE_APP_DIR/.env
     - name: Run Docker Compose
       run: |
-        ssh ${{ SSH_OPTS }} $REMOTE << EOF
+        ssh $SSH_OPTS $REMOTE << EOF
           cd $REMOTE_APP_DIR
           # run containers
           docker compose up -d
