@@ -51,7 +51,7 @@ jobs:
         scp $SSH_OPTS .env $REMOTE:$REMOTE_APP_DIR/.env
     - name: Run Docker Compose
       run: |
-        ssh $SSH_OPTS $REMOTE "cd $REMOTE_APP_DIR; docker compose up -d"
+        ssh $SSH_OPTS $REMOTE "cd $REMOTE_APP_DIR; docker-compose up -d"
     - name: Clean up .env file
       run: rm .env
     - name: Clean up SSH private key
