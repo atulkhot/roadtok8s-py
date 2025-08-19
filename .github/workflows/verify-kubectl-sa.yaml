@@ -17,7 +17,7 @@ jobs:
           EOF
       - name: Echo pods
         run: |
-          KUBECONFIG=~/.kube/kubeconfig.yaml kubectl get pods
+          KUBECONFIG=~/.kube/kubeconfig.yaml kubectl get pods -n default
       - name: Echo deployments
         run: |
-          KUBECONFIG=~/.kube/kubeconfig.yaml kubectl get deployments
+          KUBECONFIG=~/.kube/kubeconfig.yaml kubectl get deployments -n default
