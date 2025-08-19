@@ -15,6 +15,10 @@ jobs:
           cat << EOF >> ~/.kube/kubeconfig.yaml
           ${{ secrets.MY_KUBECONFIG_SA }}
           EOF
+      - name: Add target host as a local dns entry
+        run: |
+          MY_HOST="${{ secrets.AKAMAI_INSTANCE_IP_ADDRESS }}"
+          cat "$MY_HOST    airgapped_ansible_automation_1" >> /etc/hosts  
       - name: Echo pods
         run: |
           KUBECONFIG=~/.kube/kubeconfig.yaml kubectl get pods
