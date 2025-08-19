@@ -18,7 +18,7 @@ jobs:
       - name: Add target host as a local dns entry
         run: |
           MY_HOST="${{ secrets.AKAMAI_INSTANCE_IP_ADDRESS }}"
-          echo "$MY_HOST    airgapped_ansible_automation_1" | sudo tee -a /etc/hosts
+          echo "$MY_HOST    ansi_automation_1.mydomain.com" | sudo tee -a /etc/hosts
       - name: Echo pods
         run: |
           KUBECONFIG=~/.kube/kubeconfig.yaml kubectl get pods
