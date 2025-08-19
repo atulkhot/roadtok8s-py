@@ -5,7 +5,7 @@ on:
 jobs:
   verify_service_account:
     name: Verify K8s Service Account
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: azure/setup-kubectl@v3
       - name: Create/Verify `.kube` directory
@@ -15,10 +15,6 @@ jobs:
           cat << EOF >> ~/.kube/kubeconfig.yaml
           ${{ secrets.MY_KUBECONFIG_SA }}
           EOF
-      - name: Add target host as a local dns entry
-        run: |
-          MY_HOST="${{ secrets.AKAMAI_INSTANCE_IP_ADDRESS }}"
-          echo "$MY_HOST    ansi_automation_1.mydomain.com" | sudo tee -a /etc/hosts
       - name: Echo pods
         run: |
           KUBECONFIG=~/.kube/kubeconfig.yaml kubectl get pods
