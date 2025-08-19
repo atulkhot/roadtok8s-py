@@ -5,7 +5,7 @@ on:
 jobs:
   verify_service_account:
     name: Verify K8s Service Account
-    runs-on: ip-172-31-41-200
+    runs-on: ubuntu-latest
     steps:
       - uses: azure/setup-kubectl@v3
       - name: Create/Verify `.kube` directory
