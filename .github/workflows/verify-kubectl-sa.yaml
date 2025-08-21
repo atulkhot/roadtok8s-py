@@ -7,7 +7,6 @@ jobs:
     name: Verify K8s Service Account
     runs-on: self-hosted
     steps:
-      - uses: azure/setup-kubectl@v3
       - name: Create/Verify `.kube` directory
         run: mkdir -p ~/.kube/
       - name: Create kubectl config
